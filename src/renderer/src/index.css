@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* ===== Design Tokens ===== */
+@theme {
+  --color-background: #0a0a0f;
+  --color-foreground: #f0f0f5;
+  --color-card: #12121a;
+  --color-card-hover: #1a1a25;
+  --color-card-border: #1e1e2e;
+  --color-muted: #8888a0;
+  --color-muted-foreground: #6b6b80;
+  --color-primary: #f59e0b;
+  --color-primary-hover: #d97706;
+  --color-primary-light: #fbbf24;
+  --color-primary-bg: rgba(245, 158, 11, 0.1);
+  --color-secondary: #3b82f6;
+  --color-secondary-hover: #2563eb;
+  --color-accent: #8b5cf6;
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.1);
+  --color-info: #06b6d4;
+  --color-info-bg: rgba(6, 182, 212, 0.1);
+  --color-sidebar: #0d0d14;
+  --color-sidebar-hover: #161622;
+  --color-sidebar-active: rgba(245, 158, 11, 0.12);
+  --color-input: #1a1a28;
+  --color-input-border: #2a2a3c;
+  --color-input-focus: #f59e0b;
+  --color-border: #1e1e2e;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-ring: #f59e0b;
+
+  --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* ===== Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-input-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* ===== Utility ===== */
+.glass {
+  background: rgba(18, 18, 26, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), 0 0 60px rgba(245, 158, 11, 0.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(245, 158, 11, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .print-only, .print-only * {
+    visibility: visible;
+  }
+  
+  .print-only {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-invoice {
+    width: 100%;
+    padding: 20px;
+    font-size: 12px;
+  }
+
+  .print-invoice table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .print-invoice th, .print-invoice td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    text-align: left;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+/* ===== Stagger Children ===== */
+.stagger-children > * {
+  animation: fadeIn 0.3s ease-out forwards;
+  opacity: 0;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.4s; }

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "./out/renderer",
+    "rootDir": "./src/renderer/src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/renderer/src/*"]
+    },
+    "types": ["node"]
+  },
+  "include": [
+    "src/renderer/src/**/*"
+  ]
+}
