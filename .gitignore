@@ -13,8 +13,6 @@ dist/
 build/
 
 # Environment variables
-.env
-.env.local
 .env.*.local
 
 # OS files
@@ -22,9 +20,9 @@ build/
 Thumbs.db
 
 # IDE / Editor files
-.vscode/
 .idea/
 
 # Optional: package lock (uncomment if you don’t want it)
 # package-lock.json
 # yarn.lock
+config.bat
