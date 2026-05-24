@@ -13,8 +13,6 @@ dist/
 build/
 
 # Environment variables
-.env
-.env.local
 .env.*.local
 
 # OS files
@@ -28,3 +26,4 @@ Thumbs.db
 # Optional: package lock (uncomment if you don’t want it)
 # package-lock.json
 # yarn.lock
+config.bat
